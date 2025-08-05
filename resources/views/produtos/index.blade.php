@@ -25,7 +25,7 @@
                 <div class="col-md-3">
                     <select class="form-select" id="filtroCategoria">
                         <option value="">Todas as categorias</option>
-                        @foreach ($produtos->pluck('categoria')->unique() as $categoria)
+                        @foreach ($categorias as $categoria)
                             <option value="{{ $categoria }}">{{ $categoria }}</option>
                         @endforeach
                     </select>
@@ -108,10 +108,12 @@
                                             onclick="editarProduto({{ $produto->id }})" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn btn-outline-info" onclick="verDetalhes({{ $produto->id }})"
-                                            title="Detalhes">
+                                        <button class="btn btn-outline-info" data-bs-toggle="modal"
+                                            data-bs-target="#modalDetalhesProduto"
+                                            onclick="carregarDetalhes({{ $produto->id }})" title="Detalhes">
                                             <i class="fas fa-eye"></i>
                                         </button>
+
                                         @if (($produto->status ?? 'ativo') === 'ativo')
                                             <form action="{{ route('produtos.destroy', $produto) }}" method="POST"
                                                 style="display: inline;"
@@ -145,7 +147,13 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/produtos.js') }}"></script>
+    <script>
+        const rotaFiltrar = "{{ route('produtos.filtrar') }}";
+    </script>
+    <script src="{{ asset('js/produtos/produtos.js') }}"></script>
+
+    <script src="{{ asset('js/produtos/filtro.js') }}"></script>
+
     <script>
         // Dados dos produtos para JavaScript
         window.produtos = @json($produtos);

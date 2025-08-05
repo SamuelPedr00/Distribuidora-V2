@@ -1,61 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Configuração do Projeto Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este guia fornece instruções completas para configurar e executar este projeto Laravel em seu ambiente local.
 
-## About Laravel
+## 📋 Pré-requisitos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   **PHP** (versão 8.1 ou superior)
+-   **Composer** (gerenciador de dependências do PHP)
+-   **Node.js** (versão 20 ou superior) e **npm**
+-   **MySQL** ou **PostgreSQL** (ou outro banco de dados suportado)
+-   **Git**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Verificando as versões
 
-## Learning Laravel
+```bash
+php --version
+composer --version
+node --version
+npm --version
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🔧 Instalação
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 1. Clone o repositório
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+git clone https://github.com/SamuelPedr00/Distribuidora-V2.git
+cd seu-projeto
+```
 
-## Laravel Sponsors
+### 2. Instale as dependências do PHP
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+composer install
+```
 
-### Premium Partners
+### 3. Instale as dependências do Node.js
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+npm install
+```
 
-## Contributing
+### 4. Configure o arquivo de ambiente
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Copie o arquivo de exemplo e configure suas variáveis de ambiente:
 
-## Code of Conduct
+```bash
+cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Edite o arquivo `.env` e configure as seguintes variáveis:
 
-## Security Vulnerabilities
+```env
+APP_NAME=Distribuidora
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost:8000
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nome_do_banco
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+```
 
-## License
+### 5. Gere a chave da aplicação
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan key:generate
+```
+
+### 6. Configure o banco de dados
+
+Crie um banco de dados com o nome especificado no arquivo `.env`, depois execute as migrações:
+
+```bash
+php artisan migrate
+```
+
+### 7. Compile os assets (se usar Laravel Mix/Vite)
+
+Para desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Para produção:
+
+```bash
+npm run build
+```
+
+## 🚀 Executando o projeto
+
+### Servidor de desenvolvimento
+
+Inicie o servidor Laravel:
+
+```bash
+php artisan serve
+```
+
+O projeto estará disponível em `http://localhost:8000`
+
+### Atualizar dependências
+
+```bash
+composer update
+npm update
+```
+
+### Listar rotas
+
+```bash
+php artisan route:list
+```
+
+## 📚 Recursos adicionais
+
+-   [Documentação oficial do Laravel](https://laravel.com/docs)
+-   [Laravel Bootcamp](https://bootcamp.laravel.com/)
+-   [Laracasts](https://laracasts.com/)
+
+## 🤝 Contribuindo
+
+Para contribuir com este projeto:
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
