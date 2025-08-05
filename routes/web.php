@@ -25,6 +25,9 @@ Route::prefix('produtos')->name('produtos.')->group(function () {
     Route::put('/{produto}', [ProdutoController::class, 'update'])->name('update');
     Route::delete('/{produto}', [ProdutoController::class, 'destroy'])->name('destroy');
     Route::get('/{produto}/precos', [ProdutoController::class, 'getPrecos'])->name('precos');
+    Route::get('/filtrar', [ProdutoController::class, 'filtrar'])->name('filtrar');
+
+    Route::get('/{id}', [ProdutoController::class, 'show'])->name('produtos.show');
 });
 
 // Estoque

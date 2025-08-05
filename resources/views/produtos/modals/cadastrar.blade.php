@@ -70,7 +70,6 @@
                                 <input type="text" class="form-control" id="categoria" name="categoria" required>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="mb-3">
