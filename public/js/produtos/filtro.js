@@ -4,7 +4,7 @@
         const filtroCategoria = document.getElementById('filtroCategoria');
         const filtroStatus = document.getElementById('filtroStatus');
 
-        function buscarProdutos() {
+        window.buscarProdutos = function() {
             const termo = buscarInput.value;
             const categoria = filtroCategoria.value;
             const status = filtroStatus.value;
@@ -28,6 +28,6 @@
         document.getElementById('filtroCategoria').value = '';
         document.getElementById('filtroStatus').value = '';
         // Recarrega todos os produtos
-        document.dispatchEvent(new Event('DOMContentLoaded'));
+        buscarProdutos(); // Chama diretamente a função
     }
 
